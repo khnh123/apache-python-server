@@ -1,0 +1,280 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <head>
+    <script src="../static/jquery.min.js"></script>
+    <script src="../static/d3.v3.min.js"></script>
+
+      <style>
+        input[type='text'] { font-size: 11px; width: 200px; }
+        input[type='date'] { font-size: 12px; }
+        </style>
+  </head>
+   <body>
+    <h1>Woburn Shift Comparison</h1>
+   <font size="2">
+    <table style="width:100%">
+      <tr>
+        <td width="300px" align="right" valign="top">
+            <br>
+            <button type='button' id ='Overall'>Overall</button>
+            <button type='button' id ='Overall_Fab'>Overall_Fab</button>
+            <button type='button' id ='Overall_FP'>Overall_FP</button>
+             <br>
+            <br>
+            <button type='button' id ='Bifet'>Bifet</button>
+            <button type='button' id ='Bifet_Fab'>Bifet_Fab</button>
+            <button type='button' id ='Bifet_FP'>Bifet_FP</button>
+            <br>
+            <br>
+            <button type='button' id ='Phemt'>Phemt</button>
+            <button type='button' id ='Phemt_Fab'>Phemt_Fab</button>
+            <button type='button' id ='Phemt_FP'>Phemt_FP</button>
+            <br>
+            <br>
+            <button type='button' id ='Bump'>Bump</button>
+            <br>
+            <br>
+             <label for="startTime">Start Time (6am): </label><input type="date" id="startTime" size="12"><br>
+             <label for="endTime">End Time (6am): </label><input type="date" id="endTime" size="12"><br>
+            <br>
+             <label for="Area">Area: </label><input type="text" id="Area"><br>
+             <label for="Location">Location: </label><input type="text" id="Location"><br>
+             <label for="Stage">Stage: </label><input type="text" id="Stage"><br>
+             <label for="PN">PN: </label><input type="text" id="PN"><br>
+             <label for="LotType">LotType: </label><input type="text" id="LotType"><br>
+             <label for="Recipe">Recipe: </label><input type="text" id="Recipe"><br>
+            <label for="Tool">Tool <font size="1">(StageOut<>Y)</font>: </label><input type="text" id="Tool"><br>
+             <label for="StageOut">StageOut: </label><input type="text" id="StageOut"><br>
+             <label for="FrontEnd">FrontEnd: </label><input type="text" id="FrontEnd"><br>
+             <label for="BackEnd">BackEnd: </label><input type="text" id="BackEnd"><br>
+             <br>
+            <input type="radio" id="byWeek" name="x_label" value="byWeek" checked /><label for="byWeek">By Week</label><br>
+            <input type="radio" id="byMonth" name="x_label" value="byMonth" /><label for="byMonth">By Month</label><br>
+            <br>
+            <input type="checkbox" id="dateExclusion"> Use <a href="../static/TimeExclusions.csv">date exclusions</a><br>
+            <br>
+            <label for="Title">Title to show: </label><input type="text" id="Title"><br>
+            <br>
+            <button type='button' id ='retrieve'>Run!</button>
+        </td>
+        <td width="1000px" align="left" valign="top">
+
+            <div id='wordResult'></div>
+
+        </td>
+      </tr>
+    </table></font>
+
+    <div id="loading"></div>
+
+   </body>
+
+
+<script>
+/////////////// set default form values
+var offset = ((new Date()).getTimezoneOffset()); //minutes
+offset = offset/60; //hours //actual offset
+offset = 4 //EST offset
+
+var date = new Date();
+date.setHours(date.getHours() - offset);
+var inputDateFormat = d3.time.format("%Y-%m-%d");
+$('#endTime').val(inputDateFormat(date));
+
+var date2 = new Date();
+date2.setDate(date2.getDate()-14); //subtract days
+date2.setHours(date2.getHours() - offset);
+$('#startTime').val(inputDateFormat(date2)); //set field to this date
+
+$('#Area').val('6GAAS,GAAS,SILICON');
+$('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+$('#Stage').val('~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+$('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+$('#LotType').val('~T');
+$('#StageOut').val('Y');
+$('#FrontEnd').val('');
+$('#BackEnd').val('');
+$('#Title').val('Moves Shift Comparison');
+</script>
+
+<script>
+///////////////// fill in default form values on button clicks
+$('#Overall').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('');
+});
+$('#Overall_Fab').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('Y');
+        $('#BackEnd').val('');
+});
+$('#Overall_FP').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('Y');
+});
+
+$('#Bifet').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('BI*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~*DU, ~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('');
+});
+$('#Bifet_Fab').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('BI*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~*DU, ~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('Y');
+        $('#BackEnd').val('');
+});
+$('#Bifet_FP').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('BI*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~*DU, ~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('Y');
+});
+
+$('#Phemt').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('GA-*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('');
+});
+$('#Phemt_Fab').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('GA-*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('Y');
+        $('#BackEnd').val('');
+});
+$('#Phemt_FP').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('GA-*,~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('Y');
+});
+
+$('#Bump').click(function(){
+    $('#Area').val('6GAAS,GAAS,SILICON');
+        $('#Location').val('~6GAASPLN,~6DIEGAAS,~GAASPLANNG');
+        $('#Stage').val('~SIGLOCKBOX,~SIGNIF,~MESA-IMP');
+        $('#PN').val('*DU, ~SS*, ~P*, ~AS*, ~C*, ~V*');
+        $('#LotType').val('~T');
+        $('#StageOut').val('Y');
+        $('#FrontEnd').val('');
+        $('#BackEnd').val('');
+});
+</script>
+
+<script>
+/////////////////// record data on button click, send to app.py
+$("#loading").hide();
+
+$(document).ready(function() {
+   $('#retrieve').click(function(){
+       //alert("start1");
+
+       $("#loading").show();
+
+       var startTime = $('#startTime').val();
+       var endTime = $('#endTime').val();
+       var Area = $('#Area').val();
+       var Location = $('#Location').val();
+       var Stage = $('#Stage').val();
+       var PN = $('#PN').val();
+       var LotType = $('#LotType').val();
+       var Recipe = $('#Recipe').val();
+       var Tool = $('#Tool').val();
+       var StageOut = $('#StageOut').val();
+       var FrontEnd = $('#FrontEnd').val();
+       var BackEnd = $('#BackEnd').val();
+
+       var x_label = $('input[name=x_label]:checked').val();
+       var date_exclusion = $('#dateExclusion').is(":checked");
+       var Title = $('#Title').val();
+
+       if(!$.active){
+       $.ajax({
+       url: "/wob_reports/shift_comparison_response",
+       type: "get",
+       cache: false,
+       async: true,
+       data: {startTime: startTime, endTime: endTime, Area: Area, Location: Location, Stage: Stage, PN: PN, Recipe: Recipe, Tool: Tool, StageOut: StageOut, LotType: LotType, FrontEnd: FrontEnd, BackEnd: BackEnd, x_label: x_label, date_exclusion: date_exclusion, Title: Title},
+        statusCode:{
+            404: function() {
+                $("#loading").hide()
+              alert('page not found');
+            },
+            680: function() {
+                $("#loading").hide()
+              alert('page not found');
+            },
+            814: function() {
+                $("#loading").hide()
+              alert('page not found');
+            },
+            0: function() {
+                $("#loading").hide()
+              alert('page not found');
+            },
+         },
+        success: function(response) {
+       //alert("success1");
+       $("#wordResult").html(response.html);
+       //alert("success2");
+       $("#loading").hide()
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $("#loading").hide()
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+     };
+
+   });
+
+});
+</script>
+
+
+ {% endblock %}
