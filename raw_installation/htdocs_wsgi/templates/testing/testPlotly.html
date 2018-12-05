@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<head>
+    <script src="../static/jquery.min.js"></script>
+    <script src="../static/d3.v3.min.js"></script>
+
+    <style>
+        input[type='text'] {
+            font-size: 11px;
+            width: 70px;
+        }
+
+        input[type='date'] {
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+<div id="loading"></div>
+<h1>Test Plotly</h1>
+<font size="2">
+    <table style="width:100%">
+        <tr>
+            <td width="300px" align="right" valign="top">
+                <div align="left">
+                    This page is structured with JavaScript and Ajax to communicate with the Flask Python server
+                </div>
+                <br><br>
+                <label for="n_points"># points to plot: </label><input type="text" id="n_points"><br><br>
+                <button type='button' id='retrieve'>Run!</button>
+            </td>
+            <td width="1000px" align="left" valign="top">
+
+                <div id='wordResult'></div>
+
+            </td>
+        </tr>
+    </table>
+</font>
+</body>
+
+
+<script>
+    /////////////// set default form values
+    $('#n_points').val('1000');
+</script>
+<script>
+    $("#loading").hide();
+    $(document).ready(function () {
+        $('#retrieve').click(function () {
+            $("#loading").show();
+            var n_points = $('#n_points').val();
+            $.ajax({
+                url: "/testing/testPlotly_response",
+                type: "get",
+                data: {n_points: n_points},
+                success: function (response) {
+                    $("#wordResult").html(response.html);
+                    $("#loading").hide();
+                },
+                error: function (xhr) {
+                    //Do Something to handle error
+                    $("#loading").hide()
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+
+        });
+
+    });
+</script>
+
+
+{% endblock %}
