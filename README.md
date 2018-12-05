@@ -49,6 +49,14 @@ Note this will install a 32-bit version of Apache, if you'd like a 64-bit versio
     ```
 1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!"
 
-Full Installation for any operating system
+Full installation for Windows, either 32-bit or 64-bit
 -
+Coming soon!
 
+Quick Start for Linux Ubuntu, either 32-bit or 64-bit
+-
+Coming soon!
+
+Full installation for Linux Ubuntu, either 32-bit or 64-bit
+-
+Coming soon!
