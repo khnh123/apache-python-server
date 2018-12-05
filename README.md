@@ -1,6 +1,6 @@
 # apache-python-server
 
-This guide shows how to do the following, for both a Windows and Ubuntu:
+This guide shows how to do the following, for both Windows and Ubuntu:
 1. Get a working Apache server
 1. Run Python scripts on this server
 1. Set up a Flask application using module "mod_wsgi"
@@ -10,7 +10,7 @@ Quick Start for Windows, either 32-bit or 64-bit
 Note this will install a 32-bit version of Apache, if you'd like a 64-bit version, please see the next section below.  Also note, if you have issues making the below instructions work, you may want to try the Full Installation method below.
 
 #### To install Apache Server ####
-1. Copy `/Apache24.zip` to your `C:\` directory
+1. Copy `/Windows/Apache24.zip` to your `C:\` directory
 1. Open command prompt, run the following:
    1. `"C:\Apache24\bin\httpd.exe" -k start`
 1. Open browser, go to http://localhost:82
