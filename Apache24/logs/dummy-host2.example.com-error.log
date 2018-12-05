@@ -1,0 +1,8 @@
+[Tue Sep 25 10:29:51.457145 2018] [authz_core:error] [pid 5956:tid 1120] [client 10.16.56.102:51805] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi
+[Tue Sep 25 10:29:51.504016 2018] [authz_core:error] [pid 5956:tid 1120] [client 10.16.56.102:51805] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi, referer: http://wobopssvr01.ad.skynet:82/
+[Tue Sep 25 10:30:39.067585 2018] [authz_core:error] [pid 7228:tid 612] [client 10.16.56.102:51807] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi
+[Tue Sep 25 10:30:39.125590 2018] [authz_core:error] [pid 7228:tid 612] [client 10.16.56.102:51807] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi, referer: http://wobopssvr01.ad.skynet:82/
+[Tue Sep 25 10:30:39.815646 2018] [authz_core:error] [pid 7228:tid 612] [client 10.16.56.102:51807] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi
+[Tue Sep 25 10:30:39.846650 2018] [authz_core:error] [pid 7228:tid 612] [client 10.16.56.102:51807] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi, referer: http://wobopssvr01.ad.skynet:82/
+[Tue Sep 25 10:30:58.951375 2018] [authz_core:error] [pid 7228:tid 1148] [client 10.16.56.102:51809] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi
+[Tue Sep 25 10:30:58.982606 2018] [authz_core:error] [pid 7228:tid 1148] [client 10.16.56.102:51809] AH01630: client denied by server configuration: C:/myapp/app/web.wsgi, referer: http://wobopssvr01.ad.skynet:82/
