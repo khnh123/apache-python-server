@@ -28,7 +28,7 @@ Note this will install a 32-bit version of Apache, if you'd like a 64-bit versio
 1. Install a 32-bit version of [Python](https://www.python.org/downloads/), I used version 3.7, but other versions should work as well
 1. Edit the top line of file `C:\Apache24\htdocs\testcgi.py` to your Python installation directory, for example for me it was:
    1. `#!C:\Program Files (x86)\Python37-32\python.exe`
-1. Go to http://localhost:82/testcgi.py and you should see a page saying "Hello from Python!"
+1. Restart Apache, then go to http://localhost:82/testcgi.py and you should see a page saying "Hello from Python!"
 
 #### To run a Flask application using Apache module "mod_wsgi" ####
 1. Open `C:\Apache24\conf\httpd.conf` in a text editor.  Add the following code underneath the line with text `Listen localhost:82`
@@ -47,7 +47,7 @@ Note this will install a 32-bit version of Apache, if you'd like a 64-bit versio
     ErrorLog C:/Apache24/logs/error.log
     </VirtualHost>
     ```
-1. Go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!"
+1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!"
 
 Full Installation for any operating system
 -
