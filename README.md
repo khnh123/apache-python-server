@@ -13,6 +13,7 @@
 - Full installation for Linux, either 32-bit or 64-bit
 
 <a name="headers"/>
+
 ## Quick Start for Windows, either 32-bit or 64-bit 
 Note this will install a 32-bit version of Apache, if you'd like a 64-bit version, please see the next section below.  Also note, if you have issues making the below instructions work, you may want to try the Full Installation method below.
 
