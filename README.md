@@ -12,7 +12,8 @@
 - Quick Start for Linux, either 32-bit or 64-bit
 - Full installation for Linux, either 32-bit or 64-bit
 
-## Quick Start for Windows, either 32-bit or 64-bit <a name="headers"/>
+<a name="headers"/>
+## Quick Start for Windows, either 32-bit or 64-bit 
 Note this will install a 32-bit version of Apache, if you'd like a 64-bit version, please see the next section below.  Also note, if you have issues making the below instructions work, you may want to try the Full Installation method below.
 
 Also note, this has only been tested on Windows Server 2012, but should work on Windows 10 and other Windows versions.
