@@ -1,18 +1,18 @@
 # apache-python-server
 
 #### Table of Contents
-- [Quick Start for Windows, either 32-bit or 64-bit](#headers)  
+- [Quick Start for Windows, either 32-bit or 64-bit](#h1)  
    - To install Apache Server
    - To install Python and run through Apache Server 
    - To run a Flask application using Apache module "mod_wsgi" 
-- Full installation for Windows, either 32-bit or 64-bit
+- [Full installation for Windows, either 32-bit or 64-bit](#h2)
    - To install Apache Server
    - To install Python and run through Apache Server 
    - To run a Flask application using Apache module "mod_wsgi" 
-- Quick Start for Linux, either 32-bit or 64-bit
-- Full installation for Linux, either 32-bit or 64-bit
+- [Quick Start for Linux, either 32-bit or 64-bit](#h3)
+- [Full installation for Linux, either 32-bit or 64-bit](#h4)
 
-<a name="headers"/>
+<a name="h1"/>
 
 ## Quick Start for Windows, either 32-bit or 64-bit 
 Note this will install a 32-bit version of Apache, if you'd like a 64-bit version, please see the next section below.  Also note, if you have issues making the below instructions work, you may want to try the Full Installation method below.
@@ -42,7 +42,6 @@ Also note, this has only been tested on Windows Server 2012, but should work on 
 
 ### To run a Flask application using Apache module "mod_wsgi" 
 1. Open `C:\Apache24\conf\httpd.conf` in a text editor.  Add the following code underneath the line with text `Listen localhost:82`
-    
     ```
     <VirtualHost localhost:82>
     ServerAdmin domains@domain1.com
@@ -63,6 +62,8 @@ Also note, this has only been tested on Windows Server 2012, but should work on 
    1. `pip install pandas`
    1. `pip install plotly`
 1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!"
+
+<a name="h2"/>
 
 ## Full installation for Windows, either 32-bit or 64-bit
 Note, this has only been tested on Windows Server 2012, but should work on Windows 10 and other Windows versions.
@@ -98,7 +99,6 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
 1. Open an Administrator command prompt, and navigate to folder `C:\Apache24\modules`
 1. Run command `pip install mod_wsgi` then run command `mod_wsgi-express module-config` which will create a module file in this directory.  For me this was named `mod_wsgi.pyd` and its contents will depend on your Windows/Python versions.
 1. Open `C:\Apache24\conf\httpd.conf` in a text editor.  Add the following code underneath the line with text `Listen 80`
-    
     ```
     <VirtualHost localhost:80>
     ServerAdmin domains@domain1.com
@@ -124,9 +124,13 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
          1. `pip install plotly`
 1. Restart Apache, then go to http://localhost:80/ and you should see a sample webpage
 
+<a name="h3"/>
+
 ## Quick Start for Linux , either 32-bit or 64-bit
 
 Coming soon!
+
+<a name="h4"/>
 
 ## Full installation for Linux, either 32-bit or 64-bit
 
