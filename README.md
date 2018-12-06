@@ -1,7 +1,7 @@
 # apache-python-server
 
 #### Table of Contents
-- [Quick Start for Windows, either 32-bit or 64-bit](#h1)  
+- [Quick start for Windows, either 32-bit or 64-bit](#h1)  
    - To install Apache Server
    - To install Python and run through Apache Server 
    - To run a Flask application using Apache module "mod_wsgi" 
@@ -9,12 +9,12 @@
    - To install Apache Server
    - To install Python and run through Apache Server 
    - To run a Flask application using Apache module "mod_wsgi" 
-- [Quick Start for Linux, either 32-bit or 64-bit](#h3)
+- [Quick start for Linux, either 32-bit or 64-bit](#h3)
 - [Full installation for Linux, either 32-bit or 64-bit](#h4)
 
 <a name="h1"/>
 
-## Quick Start for Windows, either 32-bit or 64-bit 
+## Quick start for Windows, either 32-bit or 64-bit 
 Note this will install a 32-bit version of Apache, if you'd like a 64-bit version, please see the next section below.  Also note, if you have issues making the below instructions work, you may want to try the Full Installation method below.
 
 Also note, this has only been tested on Windows Server 2012, but should work on Windows 10 and other Windows versions.
@@ -126,7 +126,7 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
 
 <a name="h3"/>
 
-## Quick Start for Linux , either 32-bit or 64-bit
+## Quick start for Linux , either 32-bit or 64-bit
 
 Coming soon!
 
