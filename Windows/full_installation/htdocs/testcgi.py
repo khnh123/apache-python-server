@@ -1,4 +1,4 @@
-#!C:\Python34\python.exe
+#!C:\Program Files (x86)\Python37-32\python.exe
 print("Content-type: text/html")
 print("")
 print("<html><head>")
