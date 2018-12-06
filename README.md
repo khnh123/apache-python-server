@@ -1,6 +1,6 @@
 # apache-python-server
 
-This guide shows how to do the following, for both Windows and Ubuntu:
+This guide shows how to do the following, for both Windows and Linux:
 1. Get a working Apache server
 1. Run Python scripts on this server
 1. Set up a Flask application using module "mod_wsgi"
