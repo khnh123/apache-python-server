@@ -133,8 +133,3 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
 
 Coming soon!
 
-<a name="h4"/>
-
-## Full installation for Linux, either 32-bit or 64-bit
-
-Coming soon!
