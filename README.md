@@ -9,8 +9,10 @@
    - To install Apache Server
    - To install Python and run through Apache Server 
    - To run a Flask application using Apache module "mod_wsgi" 
-- [Quick start for Linux, either 32-bit or 64-bit](#h3)
-- [Full installation for Linux, either 32-bit or 64-bit](#h4)
+- [Full installation for Ubuntu Linux via SSH terminal](#h3)
+   - To install Apache Server
+   - To install Python and run through Apache Server 
+   - To run a Flask application using Apache module "mod_wsgi"
 
 <a name="h1"/>
 
@@ -97,8 +99,9 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
 ### To run a Flask application using Apache module "mod_wsgi" 
 1. Copy Git files `/Windows/full_installation/htdocs_wsgi/app.py` and `/Windows/full_installation/htdocs_wsgi/web.wsgi` to your directory `C:\Apache24\htdocs_wsgi\` 
 1. Open an Administrator command prompt, and navigate to folder `C:\Apache24\modules`
-1. Run command `pip install mod_wsgi` then run command `mod_wsgi-express module-config` which will create a module file in this directory.  For me this was named `mod_wsgi.pyd` and its contents will depend on your Windows/Python versions.
-1. Open `C:\Apache24\conf\httpd.conf` in a text editor.  Add the following code underneath the line with text `Listen 80`
+1. Run command `pip install mod_wsgi` then run command `mod_wsgi-express module-config` which will create a module file in this directory.  For me this was named `mod_wsgi.pyd` and its contents will depend on your Windows/Python versions.  Also in the `C:\Apache24\conf\httpd.conf` file, Add the following code underneath the line with text `LoadModule ...` (in the `LoadModule` section)
+   1. `LoadModule wsgi_module modules/mod_wsgi.pyd`
+1. Also in the `C:\Apache24\conf\httpd.conf` file, add the following code underneath the line with text `Listen 80`
     ```
     <VirtualHost localhost:80>
     ServerAdmin domains@domain1.com
@@ -126,7 +129,7 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
 
 <a name="h3"/>
 
-## Quick start for Linux , either 32-bit or 64-bit
+## Full installation for Ubuntu Linux via SSH terminal
 
 Coming soon!
 
