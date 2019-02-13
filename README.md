@@ -63,7 +63,8 @@ Also note, this has only been tested on Windows Server 2012, but should work on 
    1. `pip install numpy`
    1. `pip install pandas`
    1. `pip install plotly`
-1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!"
+1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!" which will look like this:
+   1. [image](./full_site_welcome.png)
 
 <a name="h2"/>
 
