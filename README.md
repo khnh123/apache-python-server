@@ -64,7 +64,9 @@ Also note, this has only been tested on Windows Server 2012, but should work on 
    1. `pip install pandas`
    1. `pip install plotly`
 1. Restart Apache, then go to http://localhost:82/ and you should see a page saying "Welcome to the Flask application!" which will look like this:
-   1. [image](./full_site_welcome.png)
+   1. ![full_site_welcome](./full_site_welcome.png)
+1. And you'll be able to test various features on this page:
+   1. ![full_site_testing](full_site_testing.png)
 
 <a name="h2"/>
 
@@ -119,14 +121,18 @@ Note, this has only been tested on Windows Server 2012, but should work on Windo
     ```
 1. Install this Python package that is being used by this test website, by running command:
    1. `pip install flask`
-1. Restart Apache, then go to http://localhost:80/ and you should see a page saying "Hello from Flask!"
+1. Restart Apache, then go to http://localhost:80/ and you should see a page saying "Hello from Flask!" that will look like this:
+      1. ![custom_site_welcome](./custom_site_welcome.png)
 1. If you'd like to test a fully formatted example website, do the following:
    1. Delete contents of `C:\Apache24\htdocs_wsgi` and copy in contents of Git directory `/Windows/Apache24/htdocs_wsgi`
    1. Install these Python packages, by running command prompt commands:
          1. `pip install numpy`
          1. `pip install pandas`
          1. `pip install plotly`
-1. Restart Apache, then go to http://localhost:80/ and you should see a sample webpage
+1. Restart Apache, then go to http://localhost:80/ and you should see a sample webpage that looks like this:
+   1. ![full_site_welcome](./full_site_welcome.png)
+1. And you'll be able to test various features on this page:
+   1. ![full_site_testing](full_site_testing.png)
 
 <a name="h3"/>
 
